@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 <div id="app">
-    <div>{{msg}}</div>
+    <div v-cloak>{{msg}}</div>
+    <div>{{2+1}}</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script type="text/javascript">
@@ -16,6 +22,18 @@
      * 2、引入vue.js文件
      * 3、可以使用vue的语法做功能了
      * 4、把vue提供的数据填充到标签里面
+     */
+
+
+    /**
+     * v-cloak指令的用法
+     * 1、提供样式
+     * [v-cloak] {
+     *display: none;
+     *}
+     *2、在插值表达式
+     *所在的标签中添加v-cloak指令
+     *背后的原理：先通过样式隐藏内容，然后在内存中进行至的替换，替换好之后再显示最终的结果
      */
     var vm = new Vue({
         el: '#app',
