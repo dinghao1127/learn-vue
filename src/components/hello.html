@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -13,7 +13,13 @@
 <div id="app">
     <div v-cloak>{{msg}}</div>
     <div>{{2+1}}</div>
+    <div v-once>{{info}}</div>
+    <div>
+        <input type="text" v-model="msg">
+    </div>
+
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script type="text/javascript">
     /**
@@ -35,13 +41,36 @@
      *所在的标签中添加v-cloak指令
      *背后的原理：先通过样式隐藏内容，然后在内存中进行至的替换，替换好之后再显示最终的结果
      */
-    var vm = new Vue({
+
+    /**
+     * v-once，只编译一次，应用场景：如果显示的信息后续不需要再修改，可以使用
+     * v-once，这样可以提高性能
+     * @type {Vue}
+     */
+
+    /**
+     * v-modal 双向数据绑定
+     */
+
+    /**
+     * MVVM设计思想
+     * 1、model---模型（数据）
+     * 2、view----视图（模板)
+     * 3、View-Model--实现控制逻辑
+     */
+
+    /**
+     * 事件绑定
+     */
+    var vm;
+    vm = new Vue({
         el: '#app',
         data: {
-            msg: 'hello world'
+            msg: 'hello world',
+            info: '1231'
         },
-    })
-
+    });
+    
 
 </script>
 
