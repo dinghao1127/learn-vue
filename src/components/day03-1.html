@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div>{{num}}</div>
+    <div v-on:click="handle0">
+        <button @click.stop="handle1" v-on:click="handle2">button点击1</button>
+    </div>
+    <div>
+<a href="http://www.baidu.com" v-on:click.prevent="handle2">百度</a>
+    </div>
+</div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    /**
+     * 事件绑定-参数传递
+     * 1、如果事件直接绑定函数名称，那么默认会传递实践对象作为事件函数的第一个参数
+     * 2、如果事件绑定函数调用，那么事件对象必须作为最后一个参数显示传递，兵器实践对象的名称必须是$event
+     *
+     * 事件修饰符
+     * .stop 阻止冒泡
+     *
+     */
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            num: 0
+        },
+        methods: {
+
+            handle: function (parms, parms2, event) {
+                console.log(parms, parms2)
+                console.log(event.target.innerHTML)
+                this.num++;
+            },
+            handle1: function (event) {
+                console.log(event.target.innerHTML)
+            },
+            handle0: function () {
+                this.num++;
+            },
+            handle2:function (event) {
+                //阻止默认行为
+                event.preventDefault();
+            }
+
+        }
+    })
+</script>
+</html>
